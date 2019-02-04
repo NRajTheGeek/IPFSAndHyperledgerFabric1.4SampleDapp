@@ -1,0 +1,15 @@
+{
+  "baseURL": "127.0.0.1",
+  "appPort": 3000,
+  "version": "0.1",
+  "channelName": "mychannel",
+  "CC_SRC_PATH": "../FABRIC",
+  "keyValueStore": "/tmp/fabric-client-kvs",
+  "eventWaitTime": "30000",
+  "admins": [
+    {
+      "username": "admin",
+      "secret": "adminpw"
+    }
+  ]
+}

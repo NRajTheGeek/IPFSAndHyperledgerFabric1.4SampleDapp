@@ -1,0 +1,46 @@
+{
+    "7321348c8894678447b54c888fdbc4e4b825bf4d1eb0cfb27874286a23ea9fd2": {
+        "owner": "Neeraj",
+        "publishDetail": [
+            {
+                "Qmf17eoZJvxyouBzHUzEzKCmZxrAnHiW8sgV9aAvUJfQa5": {
+                    "publishedBy": "UniAPublisher",
+                    "certOwner": "Neeraj",
+                    "publicationDate": "2019-01-29T13:14:29.523Z",
+                    "publicationDescription": "this is a digital pub"
+                }
+            }
+        ],
+        "shareDetail": [
+            {
+                "QmchhC4GkFjCt8Q6WtpbrKMVu7UDQUZb4Ppjpf2reUkLo8": {
+                    "sharedBy": "Neeraj",
+                    "sharedWith": "",
+                    "sharingDescription": ""
+                }
+            }
+        ]
+    },
+    "c332a4f2dd97be365880942d60e8b64a804dc4d6341bf6c8ab7fdeff524f1df0": {
+        "owner": "Neeraj",
+        "publishDetail": [
+            {
+                "QmeBNtmkJEeLmcpJcCs5mnqSrybNkw5WHCJtWTZxgAswds": {
+                    "publishedBy": "UniAPublisher",
+                    "certOwner": "Neeraj",
+                    "publicationDate": "2019-01-29T13:26:07.740Z",
+                    "publicationDescription": "this is a digital pub"
+                }
+            }
+        ],
+        "shareDetail": [
+            {
+                "QmZyPDfgKqNRQBLYZTBkQZHSeFPuaGb3k6CupHnmssDhp4": {
+                    "sharedBy": "Neeraj",
+                    "sharedWith": "",
+                    "sharingDescription": ""
+                }
+            }
+        ]
+    }
+}

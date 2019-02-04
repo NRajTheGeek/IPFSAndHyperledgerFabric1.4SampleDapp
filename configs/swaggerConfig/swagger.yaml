@@ -1,0 +1,747 @@
+swagger: "2.0"
+info:
+  version: 0.1
+  title: FabricDappWithIPFSCluster
+  description: FabricDappWithIPFSCluster Middleware API Application
+  contact:
+    name: FabricDappWithIPFSCluster
+    url: ""
+host: "localhost"
+schemes:
+  - http
+tags:
+  - name: Channels Controller
+    description: API to manage channels Information.
+  - name: Chaincodes Controller
+    description: API to manage Chaincodes.
+  - name: eCertificateDoc Controller
+    description: API to manage eCertificateDoc.
+  - name: Users Controller
+    description: API to manage Users.
+  - name: Queries Controller
+    description: API for Queries.
+paths:
+  /channelsAPI/channels:
+    post:
+      tags:
+        - Channels Controller
+      summary: This api is used for creating channels
+      operationId: createChannel
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: CreateChannel
+          required: true
+          description: Object to create channel.
+          schema:
+            $ref: "#/definitions/CreateChanel"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /channelsAPI/channels/{channelName}/peers:
+    post:
+      tags:
+        - Channels Controller
+      summary: This api is used for joining a channel
+      operationId: joinChannel
+      consumes:
+        - application/json
+      parameters:
+        - name: channelName
+          in: path
+          type: string
+          required: true
+          description: Put the channel name here for to be joined.
+        - in: body
+          name: JoinChannel
+          required: true
+          description: Object to join channel.
+          schema:
+            $ref: "#/definitions/JoinChannel"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+  /channelsAPI/channels/{channelName}/anchorpeers:
+    post:
+      tags:
+        - Channels Controller
+      summary: This api is used for Update Anchor Peers
+      operationId: UpdateAnchorPeers
+      consumes:
+        - application/json
+      parameters:
+        - name: channelName
+          in: path
+          type: string
+          required: true
+          description: Put the Update Anchor Peers.
+        - in: body
+          name: UpdateAnchorPeers
+          required: true
+          description: Object to Update Anchor Peers.
+          schema:
+            $ref: "#/definitions/UpdateAnchorPeers"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+  /chaincodesAPI/chaincodes:
+    post:
+      tags:
+        - Chaincodes Controller
+      summary: This api is used for installing a chaincode
+      operationId: installChaincode
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: InstallChaincode
+          required: true
+          description: Object to Install chaincode.
+          schema:
+            $ref: "#/definitions/InstallChaincode"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /chaincodesAPI/channels/{channelName}/chaincodes:
+    post:
+      tags:
+        - Chaincodes Controller
+      summary: This api is used for installing a chaincode
+      operationId: instantiateChaincode
+      consumes:
+        - application/json
+      parameters:
+        - name: channelName
+          in: path
+          type: string
+          required: true
+          description: Put the channel name here e.g. mychannel.
+        - in: body
+          name: InstantiateChaincode
+          required: true
+          description: Object to Instantiate chaincode.
+          schema:
+            $ref: "#/definitions/InstantiateChaincode"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /usersAPI/users:
+    post:
+      tags:
+        - Users Controller
+      summary: This api is used for sending Doc For Verification
+      operationId: createUser
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: User
+          description: "User object that needs to be added to the store"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+  /documentsAPI/uploadDocToBePublished:
+    post:
+      tags:
+        - eCertificateDoc Controller
+      summary: This api is used for sending Doc For Verification
+      operationId: uploadDocToBePublished
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: DocToUpload
+          required: true
+          description: Object for Doc To Upload.
+          schema:
+            $ref: "#/definitions/DocToUpload"
+
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /documentsAPI/viewDoc/docHash/{docHash}/CID/{CID}:
+    post:
+      tags:
+        - eCertificateDoc Controller
+      summary: This api is used for sending Doc For Verification
+      operationId: viewDoc
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: ViewDoc
+          required: true
+          description: Object to View Doc.
+          schema:
+            $ref: "#/definitions/ViewDoc"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /documentsAPI/shareDoc:
+    post:
+      tags:
+        - eCertificateDoc Controller
+      summary: This api is used for sending Doc For Verification
+      operationId: shareDoc
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: ShareDoc
+          required: true
+          description: Object to share Doc.
+          schema:
+            $ref: "#/definitions/ShareDoc"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /documentsAPI/sendDocForVerification/channels/{channelName}/chaincodeName/{chaincodeName}:
+    post:
+      tags:
+        - eCertificateDoc Controller
+      summary: This api is used for sending Doc For Verification
+      operationId: sendDocForVerification
+      consumes:
+        - application/json
+      parameters:
+        - name: channelName
+          in: path
+          type: string
+          required: true
+          description: Put the channel name here e.g. mychannel.
+        - name: chaincodeName
+          in: path
+          type: string
+          required: true
+          description: Put the chaincode name to be installed here e.g. mycc.
+        - in: body
+          name: SendDocForVerification
+          required: true
+          description: Object to Send Doc For Verification.
+          schema:
+            $ref: "#/definitions/SendDocForVerification"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /documentsAPI/updateDocStatus/channels/{channelName}/chaincodeName/{chaincodeName}:
+    post:
+      tags:
+        - eCertificateDoc Controller
+      summary: This api is used for updating Doc Status
+      operationId: updateDocStatus
+      consumes:
+        - application/json
+      parameters:
+        - name: channelName
+          in: path
+          type: string
+          required: true
+          description: Put the channel name here e.g. mychannel.
+        - name: chaincodeName
+          in: path
+          type: string
+          required: true
+          description: Put the chaincode name to be installed here e.g. mycc.
+        - in: body
+          name: UpdateDocStatus
+          required: true
+          description: Object to Send Doc For Verification.
+          schema:
+            $ref: "#/definitions/UpdateDocStatus"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /documentsAPI/queryDocByStatus/channels/{channelName}/chaincodeName/{chaincodeName}/peers/{peer}/docStatus/{DocumentStatus}/userName/{userName}/orgName/{orgName}:
+    get:
+      tags:
+        - Queries Controller
+      summary: This api is used for query Doc By Status
+      operationId: queryDocByStatus
+      consumes:
+        - application/json
+      parameters:
+        - name: channelName
+          in: path
+          type: string
+          required: true
+          description: Put the channel name here e.g. mychannel.
+        - name: chaincodeName
+          in: path
+          type: string
+          required: true
+          description: Put the chaincode name to be installed here e.g. mycc.
+        - name: peer
+          in: path
+          type: string
+          required: true
+          description: Put the peer name string here e.g. peer1.
+        - name: DocumentStatus
+          in: path
+          type: string
+          required: true
+          enum:
+            - "1"
+            - "2"
+            - "3"
+          description: Put the DocumentStatus string here .
+        - name: userName
+          in: path
+          type: string
+          required: true
+          description: Put the user name string here e.g. User1.
+        - name: orgName
+          in: path
+          type: string
+          required: true
+          description: Put the org name string here e.g. org1.
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /documentsAPI/queryDocByHash/channels/{channelName}/chaincodeName/{chaincodeName}/peers/{peer}/docHash/{DocumentHash}/userName/{userName}/orgName/{orgName}:
+    get:
+      tags:
+        - Queries Controller
+      summary: This api is used for query Doc By Hash
+      operationId: queryDocByHash
+      consumes:
+        - application/json
+      parameters:
+        - name: channelName
+          in: path
+          type: string
+          required: true
+          description: Put the channel name here e.g. mychannel.
+        - name: chaincodeName
+          in: path
+          type: string
+          required: true
+          description: Put the chaincode name to be installed here e.g. mycc.
+        - name: peer
+          in: path
+          type: string
+          required: true
+          description: Put the peer name string here e.g. peer1.
+        - name: DocumentHash
+          in: path
+          type: string
+          required: true
+          description: Put the DocumentHash string here .
+        - name: userName
+          in: path
+          type: string
+          required: true
+          description: Put the user name string here e.g. User1.
+        - name: orgName
+          in: path
+          type: string
+          required: true
+          description: Put the org name string here e.g. org1.
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  SuccessResponse:
+    type: object
+    properties:
+      status:
+        type: string
+        example: success
+      message:
+        type: string
+        example: Success Message.
+      data:
+        type: object
+        description: Required result object or array of data.
+  ErrorResponse:
+    type: object
+    properties:
+      status:
+        type: string
+        example: error
+      message:
+        type: string
+        description: Error message.
+        example: Network error found. Please try after some time.
+
+definitions:
+  User:
+    type: "object"
+    properties:
+      username:
+        type: string
+        required: true
+        description: Put the user name string here.
+      orgName:
+        type: string
+        required: true
+        description: Put the org name string here.
+  CreateChanel:
+    type: "object"
+    properties:
+      userName:
+        type: string
+        required: true
+        description: Put the unique string username here for the new user.
+      orgName:
+        type: string
+        required: true
+        description: Put the orgName here for the this new user.
+      channelName:
+        type: string
+        required: true
+        description: Put the unique string channelName here to be created , must have this channel tx file with you already.
+      channelConfigPath:
+        type: string
+        required: true
+        description: Put the exact relative string channel's tx file path here.
+  JoinChannel:
+    type: "object"
+    properties:
+      userName:
+        type: string
+        required: true
+        description: Put the unique string username here for the new user.
+      orgName:
+        type: string
+        required: true
+        description: Put the orgName here for the this new user.
+      peers:
+        type: "array"
+        items:
+          type: "string"
+        required: true
+        description: Put the unique string peer name here to be joined to the channel.
+
+  UpdateAnchorPeers:
+    type: "object"
+    properties:
+      userName:
+        type: string
+        required: true
+        description: Put the unique string username here for the new user.
+      orgName:
+        type: string
+        required: true
+        description: Put the orgName here for the this new user.
+      configUpdatePath:
+        type: string
+        required: true
+        description: Put the config Update Path.
+
+  InstallChaincode:
+    type: "object"
+    properties:
+      userName:
+        type: string
+        required: true
+        description: Put the unique string username here for the new user e.g. User1.
+      orgName:
+        type: string
+        required: true
+        description: Put the orgName here for the this new user e.g. org1.
+      peers:
+        type: "array"
+        items:
+          type: "string"
+        required: true
+        description: Put the unique string peer name here to be joined to the channel e.g. mychannel.
+      chaincodeName:
+        type: string
+        required: true
+        description: Put the chaincode name to be installed here e.g. mycc.
+      chaincodePath:
+        type: string
+        required: true
+        description: Put the path of the chaincode file here e.g. github.com/doc_chaincode.
+      chaincodeVersion:
+        type: string
+        required: true
+        description: Put the initial chaincode version e.g. v0.
+
+  InstantiateChaincode:
+    type: "object"
+    properties:
+      userName:
+        type: string
+        required: true
+        description: Put the unique string username here for the new user e.g. User1.
+      orgName:
+        type: string
+        required: true
+        description: Put the orgName here for the this new user e.g. org1.
+      peers:
+        type: "array"
+        items:
+          type: "string"
+        required: true
+        description: Put the peers for the instantiation e.g. ["peer0.org1.example.com", "peer1.org1.example.com"].
+      args:
+        type: "array"
+        items:
+          type: "string"
+        required: true
+        description: Put the args for the intended chaincode fcn string here e.g. ["init_test_chaincode", "0"].
+      chaincodeName:
+        type: string
+        required: true
+        description: Put the chaincode name to be installed here e.g. mycc.
+      chaincodeVersion:
+        type: string
+        required: true
+        description: Put the initial chaincode version e.g. v0.
+
+  DocToUpload:
+    type: "object"
+    properties:
+      document:
+        type: string
+        required: true
+        description: Put the document base64/binary string here.
+      pubisherId:
+        type: string
+        required: true
+        description: Put the pubisherId string here.
+      userId:
+        type: string
+        required: true
+        description: Put the userId string here.
+  
+  ViewDoc:
+    type: "object"
+    properties:
+      docHash:
+        type: string
+        required: true
+        description: Put the docHash string here.
+      CID:
+        type: string
+        required: true
+        description: Put the document CID string here.
+      viewerUuid:
+        type: string
+        required: true
+        description: Put the viewerUuid string here.
+      fabricSecret:
+        type: string
+        required: true
+        description: Put the fabricSecret string of viewer here.
+
+  ShareDoc:
+    type: "object"
+    properties:
+      documentHash:
+        type: string
+        required: true
+        description: Put the docHash string here.
+      shareDocCID:
+        type: string
+        required: true
+        description: Put the document CID string here.
+      ownerUUID:
+        type: string
+        required: true
+        description: Put the uuid string of the owner of this doc here.
+      ownerFabricSecret:
+        type: string
+        required: true
+        description: Put the ownerFabricSecret string of owner here.
+      uuidToBeSharedWith:
+        type: string
+        required: true
+        description: Put the uuid string of the with whome to share this doc.
+
+  SendDocForVerification:
+    type: "object"
+    properties:
+        userName:
+          type: string
+          required: true
+          description: Put the unique string username here for the new user e.g. User1.
+        orgName:
+          type: string
+          required: true
+          description: Put the orgName here for the this new user e.g. org1.
+        peers:
+          type: "array"
+          items:
+            type: "string"
+          required: true
+          description: Put the peer names to send the tx proposal to
+        docHash:
+          type: string
+          required: true
+          description: Put the document hash string here.
+        CID:
+          type: string
+          required: true
+          description: Put the CID of doc on PFS cluster here.
+        publisherUUID:
+          type: string
+          required: true
+          description: Put the publisherUUID string here.
+        ownerUUID:
+          type: string
+          required: true
+          description: Put the ownerUUID string here.
+        DocumentStatus:
+          type: string
+          required: true
+          enum:
+            - "1"
+          description: Put the DocumentStatus string here.
+        OwnerPublicKey:
+          type: string
+          required: true
+          description: Put the OwnerPublicKey string here.
+        VerifierPublicKey:
+          type: string
+          required: true
+          description: Put the VerifierPublicKey string here.
+  
+  UpdateDocStatus:
+    type: "object"
+    properties:
+      userName:
+        type: string
+        required: true
+        description: Put the unique string username here for the new user e.g. User1.
+      orgName:
+        type: string
+        required: true
+        description: Put the orgName here for the this new user e.g. org1.
+      peers:
+        type: "array"
+        items:
+          type: "string"
+        required: true
+        description: Put the peer names to send the tx proposal to
+      docHash:
+        type: string
+        required: true
+        description: Put the document hash string here.
+      DocumentStatus:
+        type: string
+        required: true
+        enum:
+          - "2"
+        description: Put the DocumentStatus string here.
+        
