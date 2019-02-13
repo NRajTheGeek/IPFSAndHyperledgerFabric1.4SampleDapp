@@ -19,7 +19,7 @@
                     "sharingDescription": ""
                 }
             }
-        ] 
+        ]
     },
     "c332a4f2dd97be365880942d60e8b64a804dc4d6341bf6c8ab7fdeff524f1df0": {
         "owner": "Neeraj",
@@ -36,6 +36,50 @@
         "shareDetail": [
             {
                 "QmZyPDfgKqNRQBLYZTBkQZHSeFPuaGb3k6CupHnmssDhp4": {
+                    "sharedBy": "Neeraj",
+                    "sharedWith": "",
+                    "sharingDescription": ""
+                }
+            }
+        ]
+    },
+    "e5b02f4f2879f5b35db26671bd4030b75550c94a869db7dadb5eb141f2c151d0": {
+        "owner": "Neeraj",
+        "publishDetail": [
+            {
+                "QmdDUX6M6Wi88Rhgd5FP6ZtQ1LoWTHwGafbxrq3DXsb6sr": {
+                    "publishedBy": "Publisher",
+                    "certOwner": "Neeraj",
+                    "publicationDate": "2019-02-13T05:37:25.739Z",
+                    "publicationDescription": "this is a digital pub"
+                }
+            }
+        ],
+        "shareDetail": [
+            {
+                "QmW1SSWQa7j5sXkhzJSAm3BVVmfFAtCGzwHrmcG7ReFVyN": {
+                    "sharedBy": "Neeraj",
+                    "sharedWith": "",
+                    "sharingDescription": ""
+                }
+            }
+        ]
+    },
+    "f0ba95029b733b5a6b63de172f084526432c9cfd5d4a0a9a762af2e8af59bc4b": {
+        "owner": "Neeraj",
+        "publishDetail": [
+            {
+                "QmTwHE4vyiRSmvgEhznZZ9CFNxAd2KjErmrd1WmuNk9EXi": {
+                    "publishedBy": "Publisher",
+                    "certOwner": "Neeraj",
+                    "publicationDate": "2019-02-13T07:08:10.060Z",
+                    "publicationDescription": "this is a digital pub"
+                }
+            }
+        ],
+        "shareDetail": [
+            {
+                "QmQwf4TgzsidHFu4RvzunLippBUkya98suxuP1eajVsAHW": {
                     "sharedBy": "Neeraj",
                     "sharedWith": "",
                     "sharingDescription": ""

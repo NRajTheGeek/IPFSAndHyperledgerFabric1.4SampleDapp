@@ -169,7 +169,37 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
+    put:
+      tags:
+        - Chaincodes Controller
+      summary: This api is used for installing a chaincode
+      operationId: upgradeChaincode
+      consumes:
+        - application/json
+      parameters:
+        - name: channelName
+          in: path
+          type: string
+          required: true
+          description: Put the channel name here e.g. mychannel.
+        - in: body
+          name: UpgradeChaincode
+          required: true
+          description: Object to Instantiate chaincode.
+          schema:
+            $ref: "#/definitions/UpgradeChaincode"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
   /usersAPI/users:
     post:
       tags:
@@ -578,6 +608,38 @@ definitions:
         description: Put the initial chaincode version e.g. v0.
 
   InstantiateChaincode:
+    type: "object"
+    properties:
+      userName:
+        type: string
+        required: true
+        description: Put the unique string username here for the new user e.g. User1.
+      orgName:
+        type: string
+        required: true
+        description: Put the orgName here for the this new user e.g. org1.
+      peers:
+        type: "array"
+        items:
+          type: "string"
+        required: true
+        description: Put the peers for the instantiation e.g. ["peer0.org1.example.com", "peer1.org1.example.com"].
+      args:
+        type: "array"
+        items:
+          type: "string"
+        required: true
+        description: Put the args for the intended chaincode fcn string here e.g. ["init_test_chaincode", "0"].
+      chaincodeName:
+        type: string
+        required: true
+        description: Put the chaincode name to be installed here e.g. mycc.
+      chaincodeVersion:
+        type: string
+        required: true
+        description: Put the initial chaincode version e.g. v0.
+
+  UpgradeChaincode:
     type: "object"
     properties:
       userName:
